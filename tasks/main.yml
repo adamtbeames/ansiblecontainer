@@ -1,0 +1,11 @@
+---
+- name: Set the package state based on how Ansible is installed.
+  set_fact:
+    ansible_package_state: "{{ 'present' if ansible_install_method == 'package' else 'absent' }}"
+
+# Setup/install tasks.
+- name: Set up Ansible on RedHat.
+  include_tasks: setup-RedHat.yml
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution != 'Fedora'

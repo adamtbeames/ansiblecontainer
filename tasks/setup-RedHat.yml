@@ -1,0 +1,26 @@
+---
+- name: Remove PyYAML
+  yum:
+    name: PyYAML
+    state: absent
+
+- name: Upgrade setuptools
+  command: pip install --upgrade setuptools
+
+- name: Install packages
+  yum:
+    name:
+      - colorama
+      - gcc
+      - python-devel
+    state: latest
+
+- name: ansible-ontainer repo
+  git:
+    repo: https://github.com/ansible/ansible-container.git
+    dest: ansible-container
+
+- name: Setup ansible-container
+  command: pip install -e .[docker]
+  args:
+    chdir: ansible-container
