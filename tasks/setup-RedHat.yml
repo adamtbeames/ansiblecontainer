@@ -10,7 +10,7 @@
 - name: Install packages
   yum:
     name:
-      - colorama
+      - python-colorama
       - gcc
       - python-devel
       - python2-pip
