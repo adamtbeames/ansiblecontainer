@@ -13,6 +13,7 @@
       - colorama
       - gcc
       - python-devel
+      - python2-pip
     state: latest
 
 - name: ansible-ontainer repo
